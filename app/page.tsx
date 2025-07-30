@@ -30,8 +30,8 @@ export default function Home() {
     return normalizeData(apiData);
   }, [apiData]);
 
-  const handleSendSelection = () => {
-    fetch("/api/proxy/data", {
+  const handleSendSelection = async () => {
+    const response = await fetch("/api/proxy/data", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,6 +40,10 @@ export default function Home() {
         ids: Array.from(selectedIds),
       }),
     });
+    if (response.status === 200) {
+      const data = await response.json();
+      alert(data.message + " " + data.data);
+    }
   };
 
   return (
