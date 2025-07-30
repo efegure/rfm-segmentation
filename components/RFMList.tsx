@@ -1,5 +1,5 @@
 import { RFMChartData } from "@/app/types/api";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 
 export default function RFMList({
   data,
@@ -47,7 +47,7 @@ export default function RFMList({
 
   useEffect(() => {
     setSelectedIds(new Set());
-  }, [filteredData]);
+  }, [frequencyFilter, monetaryFilter, recencyFilter, setSelectedIds]);
 
   return (
     <div className="flex flex-col gap-8 w-full ">
